@@ -1,0 +1,739 @@
+/* Reset y Estilos Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #1e40af;
+    --primary-dark: #1e3a8a;
+    --secondary-color: #f59e0b;
+    --accent-color: #059669;
+    --text-primary: #1f2937;
+    --text-secondary: #6b7280;
+    --text-light: #9ca3af;
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8fafc;
+    --bg-gradient: linear-gradient(135deg, #1e40af 0%, #3730a3 100%);
+    --bg-gradient-alt: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+    --border-radius: 20px;
+    --transition: all 0.3s ease;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.5;
+    color: var(--text-primary);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Efecto de fondo animado */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.2) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.2) 0%, transparent 50%);
+    animation: backgroundFloat 20s ease-in-out infinite;
+    z-index: -1;
+}
+
+@keyframes backgroundFloat {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-15px) rotate(1deg); }
+}
+
+/* Tarjeta Virtual Principal - COMPACTA */
+.virtual-card {
+    background: rgba(248, 250, 252, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-2xl);
+    max-width: 380px;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    animation: cardAppear 0.8s ease-out;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Animación de aparición */
+@keyframes cardAppear {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Header de la Tarjeta - COMPACTO */
+.card-header {
+    background: var(--bg-gradient);
+    color: white;
+    padding: 1.2rem 1.5rem 1rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.company-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    position: relative;
+    z-index: 2;
+}
+
+.logo-img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    border-radius: 10px;
+    background: white;
+    padding: 8px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    box-shadow: var(--shadow-md);
+    transition: var(--transition);
+}
+
+.logo-img:hover {
+    transform: scale(1.1) rotate(5deg);
+    background: white;
+    box-shadow: var(--shadow-lg);
+}
+
+.company-name {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: white;
+    letter-spacing: -0.5px;
+}
+
+/* Sección Principal de la Tarjeta - COMPACTA */
+.card-main {
+    padding: 1.5rem 1.5rem 1rem;
+}
+
+/* Perfil y Foto - COMPACTO */
+.profile-section {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.profile-image {
+    position: relative;
+    margin-bottom: 1rem;
+    display: inline-block;
+}
+
+.tiffany-photo {
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid white;
+    box-shadow: var(--shadow-lg);
+    transition: var(--transition);
+    position: relative;
+    z-index: 2;
+}
+
+.tiffany-photo:hover {
+    transform: scale(1.05) rotate(2deg);
+    box-shadow: var(--shadow-xl);
+}
+
+/* Círculo decorativo detrás de la foto - PERFECTAMENTE CENTRADO */
+.profile-image::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 186px;
+    height: 186px;
+    background: var(--bg-gradient-alt);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    animation: rotateGradient 10s linear infinite;
+}
+
+@keyframes rotateGradient {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+.status-indicator {
+    position: absolute;
+    bottom: 2px;
+    right: 50%;
+    transform: translateX(50%);
+    background: var(--accent-color);
+    color: white;
+    padding: 4px 10px;
+    border-radius: 15px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    box-shadow: var(--shadow-md);
+    border: 2px solid white;
+    z-index: 3;
+}
+
+.status-indicator i {
+    font-size: 0.6rem;
+    color: #22c55e;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+.profile-name {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 0.3rem;
+    background: var(--bg-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.profile-title {
+    font-size: 1rem;
+    color: var(--primary-color);
+    font-weight: 700;
+    margin-bottom: 0.2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+.profile-subtitle {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+/* Información de Contacto - COMPACTA */
+.contact-info {
+    margin-bottom: 1.5rem;
+    background: var(--bg-secondary);
+    border-radius: 16px;
+    padding: 1rem;
+    border: 1px solid rgba(99, 102, 241, 0.1);
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(99, 102, 241, 0.1);
+    transition: var(--transition);
+}
+
+.contact-item:last-child {
+    border-bottom: none;
+}
+
+.contact-item:hover {
+    background: rgba(99, 102, 241, 0.05);
+    border-radius: 12px;
+    padding-left: 10px;
+    padding-right: 10px;
+    transform: translateX(3px);
+}
+
+.contact-item i {
+    width: 35px;
+    height: 35px;
+    background: var(--bg-gradient);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+    box-shadow: var(--shadow-md);
+    transition: var(--transition);
+}
+
+.contact-item:hover i {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: var(--shadow-lg);
+}
+
+.contact-item div {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.contact-item .label {
+    font-size: 0.75rem;
+    color: var(--text-light);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+.contact-item .value {
+    font-size: 0.85rem;
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+/* Especialidades - COMPACTO */
+.specialties {
+    margin-bottom: 1.5rem;
+}
+
+.specialties h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    text-align: center;
+    position: relative;
+}
+
+.specialties h3::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 2px;
+    background: var(--bg-gradient);
+    border-radius: 1px;
+}
+
+.specialty-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+}
+
+.tag {
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border: 2px solid transparent;
+    transition: var(--transition);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.tag::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: var(--bg-gradient);
+    transition: var(--transition);
+    z-index: -1;
+}
+
+.tag:hover {
+    color: white;
+    border-color: transparent;
+    transform: translateY(-2px);
+}
+
+.tag:hover::before {
+    left: 0;
+}
+
+/* Botones de Acción - COMPACTOS */
+.action-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 1.5rem;
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 18px;
+    border-radius: 14px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+    transition: var(--transition);
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: var(--transition);
+}
+
+.btn:hover::before {
+    left: 100%;
+}
+
+.btn-primary {
+    background: var(--bg-gradient);
+    color: white;
+    box-shadow: var(--shadow-md);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.btn-secondary {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    border: 2px solid var(--bg-secondary);
+}
+
+.btn-secondary:hover {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+.btn-accent {
+    background: var(--secondary-color);
+    color: white;
+    box-shadow: var(--shadow-md);
+}
+
+.btn-accent:hover {
+    background: #d97706;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+/* Redes Sociales - COMPACTAS */
+.social-links {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.social-links h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.social-links h3::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 2px;
+    background: var(--bg-gradient);
+    border-radius: 1px;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.social-icon {
+    width: 45px;
+    height: 45px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.1rem;
+    text-decoration: none;
+    transition: var(--transition);
+    box-shadow: var(--shadow-md);
+    position: relative;
+    overflow: hidden;
+}
+
+.social-icon::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    transition: var(--transition);
+}
+
+.social-icon:hover {
+    transform: translateY(-3px) scale(1.1) rotate(3deg);
+    box-shadow: var(--shadow-lg);
+}
+
+.social-icon:hover::before {
+    transform: scale(1.2);
+    opacity: 0.8;
+}
+
+.social-icon.linkedin {
+    background: #0077b5;
+}
+
+.social-icon.facebook {
+    background: #1877f2;
+}
+
+.social-icon.instagram {
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+}
+
+.social-icon.whatsapp {
+    background: #25d366;
+}
+
+/* Footer de la Tarjeta - COMPACTO */
+.card-footer {
+    background: var(--bg-gradient-alt);
+    padding: 1.2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.card-footer::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    animation: footerGlow 12s ease-in-out infinite reverse;
+}
+
+@keyframes footerGlow {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(180deg); }
+}
+
+.footer-text {
+    font-style: italic;
+    color: white;
+    margin-bottom: 1rem;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    font-weight: 500;
+    position: relative;
+    z-index: 2;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    position: relative;
+    z-index: 2;
+}
+
+.footer-logo-img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+}
+
+.footer-logo span {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: white;
+}
+
+/* Responsive Design Optimizado para Móviles */
+@media (max-width: 480px) {
+    .virtual-card {
+        margin: 5px;
+        border-radius: 18px;
+        max-width: 360px;
+    }
+    
+    .card-main {
+        padding: 1.2rem 1.2rem 0.8rem;
+    }
+    
+    .card-header {
+        padding: 1rem 1.2rem 0.8rem;
+    }
+    
+    .profile-name {
+        font-size: 1.4rem;
+    }
+    
+    .tiffany-photo {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .action-buttons {
+        gap: 8px;
+    }
+    
+    .btn {
+        padding: 10px 16px;
+        font-size: 0.8rem;
+    }
+    
+    .social-icons {
+        gap: 12px;
+    }
+    
+    .social-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+    
+    .contact-info {
+        padding: 0.8rem;
+    }
+    
+    .contact-item {
+        padding: 8px 0;
+    }
+    
+    .contact-item i {
+        width: 30px;
+        height: 30px;
+        font-size: 0.8rem;
+    }
+    
+    .specialty-tags {
+        gap: 6px;
+    }
+    
+    .tag {
+        padding: 5px 10px;
+        font-size: 0.7rem;
+    }
+}
+
+/* Efectos de Hover Optimizados */
+.virtual-card:hover {
+    transform: translateY(-5px) scale(1.01);
+    box-shadow: 0 30px 50px -12px rgba(0, 0, 0, 0.3);
+}
+
+/* Animaciones de entrada escalonadas - MÁS RÁPIDAS */
+.profile-section,
+.contact-info,
+.specialties,
+.action-buttons,
+.social-links {
+    animation: fadeInUp 0.6s ease-out;
+    animation-fill-mode: both;
+}
+
+.contact-info {
+    animation-delay: 0.1s;
+}
+
+.specialties {
+    animation-delay: 0.2s;
+}
+
+.action-buttons {
+    animation-delay: 0.3s;
+}
+
+.social-links {
+    animation-delay: 0.4s;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Efectos de brillo en hover */
+.btn:hover,
+.social-icon:hover,
+.tag:hover {
+    filter: brightness(1.1);
+}
+
+/* Scrollbar personalizado */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--bg-gradient);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-dark);
+}
