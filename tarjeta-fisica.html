@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarjeta Física - Elephant Coach & Training</title>
+    <meta name="description" content="Tarjeta física para impresión - Tiffany Foster Elephant Coach & Training">
+    <link rel="stylesheet" href="tarjeta-fisica.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Botón de Descarga Simple -->
+    <button id="downloadBtn" class="download-btn">Descargar</button>
+
+    <!-- Tarjeta Física para Impresión -->
+    <div class="physical-card" id="physicalCard">
+        <!-- Header de la Tarjeta -->
+        <div class="card-header">
+            <div class="company-logo">
+                <img src="img/logo4.png" alt="Elephant Coach & Training Logo" class="logo-img">
+                <span class="company-name">Entrenamiento para Líderes</span>
+            </div>
+            <div class="nfc-indicator">
+                <i class="fas fa-wifi"></i>
+                <span>NFC</span>
+            </div>
+        </div>
+
+        <!-- Foto y Información Principal -->
+        <div class="card-main">
+            <div class="profile-section">
+                <div class="profile-image">
+                    <img src="img/tifany5.png" alt="Tiffany Foster" class="tiffany-photo">
+                </div>
+                <div class="profile-info">
+                    <h1 class="profile-name">Tiffany Foster</h1>
+                    <p class="profile-title">Fundadora y Líder</p>
+                    <p class="profile-subtitle">Elephant Coach & Training</p>
+                </div>
+            </div>
+
+            <!-- Información de Contacto -->
+            <div class="contact-info">
+                <div class="contact-item clickable">
+                    <i class="fas fa-globe"></i>
+                    <div>
+                        <span class="label">Sitio Web</span>
+                        <span class="value">www.elephantcoach.com</span>
+                    </div>
+                </div>
+                <div class="contact-item clickable">
+                    <i class="fab fa-whatsapp"></i>
+                    <div>
+                        <span class="label">WhatsApp</span>
+                        <span class="value">+51 927 120 130</span>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <span class="label">Email</span>
+                        <span class="value">Tiff.foster08@gmail.com</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script para descarga -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script>
+        document.getElementById('downloadBtn').addEventListener('click', function() {
+            const card = document.getElementById('physicalCard');
+            
+            // Obtener las dimensiones reales de la tarjeta en píxeles
+            const rect = card.getBoundingClientRect();
+            const actualWidth = rect.width;
+            const actualHeight = rect.height;
+            
+            // Configuración para capturar exactamente como se ve
+            const options = {
+                width: actualWidth,
+                height: actualHeight,
+                scale: 4, // Alta resolución para impresión
+                useCORS: true,
+                backgroundColor: null,
+                logging: false,
+                allowTaint: true,
+                foreignObjectRendering: true
+            };
+            
+            html2canvas(card, options).then(function(canvas) {
+                // Crear canvas final con dimensiones exactas NFC
+                const finalCanvas = document.createElement('canvas');
+                const ctx = finalCanvas.getContext('2d');
+                
+                // Dimensiones finales en píxeles (300 DPI para impresión)
+                const finalWidth = Math.round(53.98 * 11.81); // 53.98mm a píxeles (300 DPI)
+                const finalHeight = Math.round(85.6 * 11.81); // 85.6mm a píxeles (300 DPI)
+                
+                finalCanvas.width = finalWidth;
+                finalCanvas.height = finalHeight;
+                
+                // Dibujar la imagen escalada al tamaño final
+                ctx.drawImage(canvas, 0, 0, finalWidth, finalHeight);
+                
+                // Crear enlace de descarga
+                const link = document.createElement('a');
+                link.download = 'tarjeta-nfc-elephant-coach.png';
+                link.href = finalCanvas.toDataURL('image/png', 1.0);
+                
+                // Descargar
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            }).catch(function(error) {
+                console.error('Error al generar imagen:', error);
+                alert('Error al generar la imagen. Intenta de nuevo.');
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,363 @@
+/* Reset y Estilos Base para Tarjeta Física */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #1e40af;
+    --primary-dark: #1e3a8a;
+    --secondary-color: #f59e0b;
+    --accent-color: #059669;
+    --text-primary: #1f2937;
+    --text-secondary: #6b7280;
+    --text-light: #9ca3af;
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8fafc;
+    --bg-gradient: linear-gradient(135deg, #1e40af 0%, #3730a3 100%);
+    --bg-gradient-alt: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    --border-radius: 8px;
+    --transition: all 0.3s ease;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #f0f2f5;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    position: relative;
+}
+
+/* Botón de descarga simple */
+.download-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #1e40af;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    cursor: pointer;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.download-btn:hover {
+    background: #1e3a8a;
+}
+
+/* Tarjeta Física Principal - Vertical NFC (53.98 x 85.6 mm) */
+.physical-card {
+    width: 53.98mm;
+    height: 85.6mm;
+    position: relative;
+    border-radius: 3mm;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    background: rgba(248, 250, 252, 0.95);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header de la Tarjeta - REDISEÑADO */
+.card-header {
+    background: linear-gradient(135deg, #133696 0%, #0a4096 50%, #1e40af 100%);
+    color: white;
+    padding: 1.5mm 2mm 1mm;
+    height: 50px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border-radius: 3mm 3mm 0 0;
+}
+
+.card-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+    z-index: 1;
+}
+
+.company-logo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5mm;
+    position: relative;
+    z-index: 2;
+}
+
+.logo-img {
+    width: 12mm;
+    height: 10.5mm;
+    object-fit: fill;
+    border-radius: 1mm;
+    background: white;
+    padding: 0.8mm;
+}
+
+.company-name {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.2mm;
+    font-weight: 600;
+    color: white;
+    letter-spacing: 0.3mm;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+    line-height: 1.3;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    padding: 1mm 2mm;
+    border-radius: 1.5mm;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.company-name:hover {
+    transform: translateY(-0.5mm);
+    background-color: rgba(255, 255, 255, 0.15);
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+.nfc-indicator {
+    position: absolute;
+    top: 1mm;
+    right: 1.5mm;
+    display: flex;
+    align-items: center;
+    gap: 0.8mm;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 0.8mm 1.5mm;
+    border-radius: 1.5mm;
+    backdrop-filter: blur(15px);
+    font-size: 1.5mm;
+    font-weight: 600;
+    z-index: 2;
+}
+
+.nfc-indicator i {
+    font-size: 1.5mm;
+    color: white;
+}
+
+.nfc-indicator span {
+    font-size: 1.3mm;
+    font-weight: 600;
+    color: white;
+    letter-spacing: 0.1mm;
+}
+
+/* Sección Principal de la Tarjeta */
+.card-main {
+    padding: 2.5mm 3mm 2mm;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Perfil y Foto */
+.profile-section {
+    text-align: center;
+    margin-bottom: 2mm;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5mm;
+}
+
+.profile-image {
+    position: relative;
+    display: inline-block;
+}
+
+.tiffany-photo {
+    width: 14mm;
+    height: 14mm;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 0.5mm solid #244646;
+    box-shadow: var(--shadow-lg);
+    transition: var(--transition);
+    position: relative;
+    z-index: 2;
+}
+
+/* Marco formal detrás de la foto */
+.profile-image::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 15mm;
+    height: 15mm;
+    background: linear-gradient(135deg, #e5e7eb 0%, #d1d5db 50%, #9ca3af 100%);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    box-shadow: 
+        0 2px 8px rgba(0, 0, 0, 0.1),
+        inset 0 1px 2px rgba(255, 255, 255, 0.3);
+}
+
+.profile-info {
+    text-align: center;
+}
+
+.profile-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5mm;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.5mm;
+    background: var(--bg-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.2;
+}
+
+.profile-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.2mm;
+    color: var(--primary-color);
+    font-weight: 600;
+    margin-bottom: 0.3mm;
+    text-transform: uppercase;
+    letter-spacing: 0.3mm;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.profile-subtitle {
+    font-size: 2mm;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+/* Información de Contacto */
+.contact-info {
+    margin-bottom: 0;
+    padding: 2mm;
+    background: var(--bg-secondary);
+    border-radius: 2mm;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 2mm;
+    padding: 1.2mm 0;
+    border-bottom: 1px solid rgba(99, 102, 241, 0.1);
+    transition: var(--transition);
+}
+
+.contact-item:last-child {
+    border-bottom: none;
+}
+
+.contact-item i {
+    width: 4mm;
+    height: 4mm;
+    background: var(--bg-gradient);
+    border-radius: 1.2mm;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 2mm;
+    flex-shrink: 0;
+}
+
+.contact-item div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5mm;
+}
+
+.contact-item .label {
+    font-size: 1.6mm;
+    color: var(--text-light);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1mm;
+}
+
+.contact-item .value {
+    font-size: 2mm;
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+/* Estilos para elementos clickeables */
+.contact-item.clickable {
+    cursor: pointer;
+    user-select: none;
+}
+
+.contact-item.clickable:hover {
+    background: rgba(99, 102, 241, 0.08);
+    border-radius: 2mm;
+    padding-left: 2mm;
+    padding-right: 2mm;
+    transform: translateX(1mm);
+    box-shadow: 0 1px 4px rgba(99, 102, 241, 0.15);
+}
+
+
+
+/* Estilos para Impresión */
+@media print {
+    body {
+        background: white;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .physical-card {
+        box-shadow: none;
+        width: 53.98mm;
+        height: 85.6mm;
+    }
+}
+
+/* Responsive para Vista Previa */
+@media (max-width: 600px) {
+    .physical-card {
+        width: 180px;
+        height: 285px;
+        transform: scale(0.8);
+    }
+}
+
+@media (max-width: 400px) {
+    .physical-card {
+        width: 150px;
+        height: 238px;
+        transform: scale(0.7);
+    }
+}
