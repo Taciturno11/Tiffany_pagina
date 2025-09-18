@@ -197,8 +197,8 @@ body {
 }
 
 .tiffany-photo {
-    width: 14mm;
-    height: 14mm;
+    width: 16mm;
+    height: 16mm;
     border-radius: 50%;
     object-fit: cover;
     border: 0.5mm solid #244646;
@@ -214,8 +214,8 @@ body {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 15mm;
-    height: 15mm;
+    width: 16.5mm;
+    height: 16.5mm;
     background: linear-gradient(135deg, #e5e7eb 0%, #d1d5db 50%, #9ca3af 100%);
     border-radius: 50%;
     transform: translate(-50%, -50%);
@@ -230,7 +230,7 @@ body {
 }
 
 .profile-name {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Inter', sans-serif;
     font-size: 3.5mm;
     font-weight: 700;
     color: var(--text-primary);
@@ -243,14 +243,18 @@ body {
 }
 
 .profile-title {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 2.2mm;
-    color: var(--primary-color);
-    font-weight: 600;
+    color: var(--text-primary);
+    font-weight: 700;
     margin-bottom: 0.3mm;
     text-transform: uppercase;
     letter-spacing: 0.3mm;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    background: var(--bg-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .profile-subtitle {
