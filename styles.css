@@ -700,6 +700,234 @@ body {
     line-height: 1.6;
 }
 
+/* ========================================
+   SECCIÓN DE LIDERAZGO INDEPENDIENTE
+   ======================================== */
+
+.leadership-section {
+    padding: 60px 0;
+    background: var(--bg-secondary);
+}
+
+.leadership {
+    background: white;
+    padding: 3rem;
+    border-radius: 16px;
+    margin-bottom: 3rem;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-color);
+}
+
+/* Facetas integradas en leadership-section */
+.facets-content {
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    background: white;
+    border-radius: 16px;
+    padding: 3rem;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-color);
+}
+
+/* ========================================
+   FACETAS INTEGRADAS EN LEADERSHIP
+   ======================================== */
+
+.facets-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.facets-header h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.8rem;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.facets-header p {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.facets-gallery {
+    position: relative;
+    margin-bottom: 2rem;
+    min-height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Layout Escalera (Estado inicial) - Imágenes superpuestas */
+.facets-staircase {
+    position: relative;
+    width: 200px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.facet-image {
+    position: absolute;
+    width: 150px;
+    height: 200px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.facet-image:hover {
+    transform: scale(1.05);
+    z-index: 10;
+    box-shadow: var(--shadow-xl);
+}
+
+/* Posicionamiento superpuesto en escalera */
+.facet-image:nth-child(1) {
+    z-index: 4;
+    transform: translateX(-30px) translateY(20px) rotate(-5deg);
+}
+
+.facet-image:nth-child(2) {
+    z-index: 3;
+    transform: translateX(-10px) translateY(10px) rotate(-2deg);
+}
+
+.facet-image:nth-child(3) {
+    z-index: 2;
+    transform: translateX(10px) translateY(-10px) rotate(2deg);
+}
+
+.facet-image:nth-child(4) {
+    z-index: 1;
+    transform: translateX(30px) translateY(-20px) rotate(5deg);
+}
+
+.facet-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.facet-image:hover .facet-img {
+    transform: scale(1.1);
+}
+
+.facet-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+    color: white;
+    padding: 1rem 0.5rem 0.5rem;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.facet-image:hover .facet-overlay {
+    opacity: 1;
+}
+
+.facet-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Layout Horizontal (Estado expandido) */
+.facets-horizontal {
+    display: none;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    width: 100%;
+}
+
+.facets-gallery.expanded .facets-staircase {
+    display: none;
+}
+
+.facets-gallery.expanded .facets-horizontal {
+    display: grid;
+}
+
+.facet-item {
+    text-align: center;
+    background: var(--bg-secondary);
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow-md);
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-color);
+}
+
+.facet-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.facet-img-horizontal {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+}
+
+.facet-item h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.8rem;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.facet-item p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Controles */
+.facets-controls {
+    text-align: center;
+}
+
+.facets-controls .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+}
+
+.facets-controls .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
 /* Success Story Section */
 .success-story {
     padding: 60px 0;
@@ -1349,6 +1577,74 @@ body {
         padding: 40px 0;
     }
 
+    .leadership-section {
+        padding: 40px 0;
+    }
+
+    .leadership {
+        padding: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .facets-content {
+        padding: 2rem;
+    }
+
+    .facets-header h2 {
+        font-size: 1.8rem;
+    }
+
+    .facets-header p {
+        font-size: 0.9rem;
+    }
+
+    .facets-staircase {
+        width: 180px;
+        height: 250px;
+    }
+
+    .facet-image {
+        width: 120px;
+        height: 160px;
+    }
+
+    .facet-image:nth-child(1) {
+        transform: translateX(-25px) translateY(15px) rotate(-4deg);
+    }
+
+    .facet-image:nth-child(2) {
+        transform: translateX(-8px) translateY(8px) rotate(-1deg);
+    }
+
+    .facet-image:nth-child(3) {
+        transform: translateX(8px) translateY(-8px) rotate(1deg);
+    }
+
+    .facet-image:nth-child(4) {
+        transform: translateX(25px) translateY(-15px) rotate(4deg);
+    }
+
+    .facets-horizontal {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+
+    .facet-item {
+        padding: 1.2rem;
+    }
+
+    .facet-img-horizontal {
+        height: 150px;
+    }
+
+    .facet-item h3 {
+        font-size: 1.1rem;
+    }
+
+    .facet-item p {
+        font-size: 0.85rem;
+    }
+
     .about-content {
         display: flex;
         flex-direction: column;
@@ -1423,6 +1719,74 @@ body {
 @media (max-width: 480px) {
     .about {
         padding: 30px 0;
+    }
+
+    .leadership-section {
+        padding: 30px 0;
+    }
+
+    .leadership {
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .facets-content {
+        padding: 1.5rem;
+    }
+
+    .facets-header h2 {
+        font-size: 1.6rem;
+    }
+
+    .facets-header p {
+        font-size: 0.85rem;
+    }
+
+    .facets-staircase {
+        width: 160px;
+        height: 220px;
+    }
+
+    .facet-image {
+        width: 100px;
+        height: 140px;
+    }
+
+    .facet-image:nth-child(1) {
+        transform: translateX(-20px) translateY(12px) rotate(-3deg);
+    }
+
+    .facet-image:nth-child(2) {
+        transform: translateX(-6px) translateY(6px) rotate(-1deg);
+    }
+
+    .facet-image:nth-child(3) {
+        transform: translateX(6px) translateY(-6px) rotate(1deg);
+    }
+
+    .facet-image:nth-child(4) {
+        transform: translateX(20px) translateY(-12px) rotate(3deg);
+    }
+
+    .facets-horizontal {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .facet-item {
+        padding: 1rem;
+    }
+
+    .facet-img-horizontal {
+        height: 120px;
+    }
+
+    .facet-item h3 {
+        font-size: 1rem;
+    }
+
+    .facet-item p {
+        font-size: 0.8rem;
     }
 
     .about-content {

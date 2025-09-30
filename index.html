@@ -171,18 +171,80 @@
                     <img src="img/portada2.jpeg" alt="Oficina Elephant Coach" class="about-img">
                 </div>
             </div>
-            <div class="leadership">
-                <div class="leader-card">
-                    <div class="leader-image">
-                        <a href="sitioWeb.html" class="leader-link">
-                            <img src="img/tiffany.jpeg" alt="Tiffany Foster dictando charla" class="leader-img">
-                        </a>
+        </div>
+    </section>
+
+    <!-- Leadership Section -->
+    <section class="leadership-section">
+        <div class="container">
+
+            
+            <!-- Facetas de Tiffany -->
+            <div class="facets-content">
+                <div class="facets-header">
+                    <h2>Las Múltiples Facetas de Tiffany Foster</h2>
+                    <p>Descubre las diferentes dimensiones de una líder integral</p>
+                </div>
+                
+                <div class="facets-gallery" id="facetsGallery">
+                    <!-- Layout Escalera (Estado inicial) -->
+                    <div class="facets-staircase">
+                        <div class="facet-image" data-facet="empresaria">
+                            <img src="img/tiffany.jpeg" alt="Tiffany Foster - Empresaria" class="facet-img">
+                            <div class="facet-overlay">
+                                <span class="facet-label">Empresaria</span>
+                            </div>
+                        </div>
+                        <div class="facet-image" data-facet="lider">
+                            <img src="img/tiffany.jpeg" alt="Tiffany Foster - Líder" class="facet-img">
+                            <div class="facet-overlay">
+                                <span class="facet-label">Líder</span>
+                            </div>
+                        </div>
+                        <div class="facet-image" data-facet="escritora">
+                            <img src="img/tiffany.jpeg" alt="Tiffany Foster - Escritora" class="facet-img">
+                            <div class="facet-overlay">
+                                <span class="facet-label">Escritora</span>
+                            </div>
+                        </div>
+                        <div class="facet-image" data-facet="coach">
+                            <img src="img/tiffany.jpeg" alt="Tiffany Foster - Coach" class="facet-img">
+                            <div class="facet-overlay">
+                                <span class="facet-label">Coach</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="leader-info">
-                        <h3>Tiffany Foster</h3>
-                        <p class="leader-title">Fundadora y Líder</p>
-                        <p>Experta en coaching organizacional y desarrollo de liderazgo con amplia trayectoria en transformación empresarial.</p>
+                    
+                    <!-- Layout Horizontal (Estado expandido) -->
+                    <div class="facets-horizontal" id="facetsHorizontal">
+                        <div class="facet-item" data-facet="empresaria">
+                            <img src="img/tiffany.jpeg" alt="Tiffany Foster - Empresaria" class="facet-img-horizontal">
+                            <h3>Empresaria</h3>
+                            <p>Fundadora de Elephant Coach & Training, con visión estratégica para transformar organizaciones y generar resultados tangibles.</p>
+                        </div>
+                        <div class="facet-item" data-facet="lider">
+                            <img src="img/tiffany.jpeg" alt="Tiffany Foster - Líder" class="facet-img-horizontal">
+                            <h3>Líder</h3>
+                            <p>Experta en desarrollo de liderazgo, especializada en coaching para equipos de ventas y reestructuración organizacional.</p>
+                        </div>
+                        <div class="facet-item" data-facet="escritora">
+                            <img src="img/tiffany.jpeg" alt="Tiffany Foster - Escritora" class="facet-img-horizontal">
+                            <h3>Escritora</h3>
+                            <p>Autora de publicaciones especializadas en coaching empresarial y liderazgo efectivo, compartiendo conocimiento a través de sus libros.</p>
+                        </div>
+                        <div class="facet-item" data-facet="coach">
+                            <img src="img/tiffany.jpeg" alt="Tiffany Foster - Coach" class="facet-img-horizontal">
+                            <h3>Coach</h3>
+                            <p>Consultora especializada en coaching organizacional, con amplia trayectoria en transformación empresarial y desarrollo de talento.</p>
+                        </div>
                     </div>
+                </div>
+                
+                <div class="facets-controls">
+                    <button class="btn btn-primary" id="expandFacets">
+                        <i class="fas fa-expand-arrows-alt"></i>
+                        <span class="btn-text">Expandir</span>
+                    </button>
                 </div>
             </div>
         </div>
@@ -384,6 +446,33 @@
                 navMenu.classList.remove('active');
                 hamburger.classList.remove('active');
             });
+        });
+
+        // Facetas expand functionality
+        const expandBtn = document.getElementById('expandFacets');
+        const facetsGallery = document.getElementById('facetsGallery');
+        const facetsHorizontal = document.getElementById('facetsHorizontal');
+        const btnText = document.querySelector('.btn-text');
+        const btnIcon = document.querySelector('#expandFacets i');
+        
+        let isExpanded = false;
+        
+        expandBtn.addEventListener('click', function() {
+            if (!isExpanded) {
+                // Expand to horizontal layout
+                facetsGallery.classList.add('expanded');
+                facetsHorizontal.style.display = 'grid';
+                btnText.textContent = 'Contraer';
+                btnIcon.className = 'fas fa-compress-arrows-alt';
+                isExpanded = true;
+            } else {
+                // Collapse to staircase layout
+                facetsGallery.classList.remove('expanded');
+                facetsHorizontal.style.display = 'none';
+                btnText.textContent = 'Expandir';
+                btnIcon.className = 'fas fa-expand-arrows-alt';
+                isExpanded = false;
+            }
         });
     </script>
 </body>
