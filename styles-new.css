@@ -152,13 +152,13 @@ img {
    HERO SECTION
    =================================== */
 .hero {
-    min-height: 100vh;
+    min-height: 85vh;
     background: var(--gradient-purple);
-    padding: 5rem 2rem 4rem;
+    padding: 5rem 2rem 3rem;
     display: flex;
     align-items: flex-start;
     justify-content: center;
-    padding-top: calc(70px + 3rem);
+    padding-top: calc(70px + 2rem);
 }
 
 .hero-grid {
@@ -249,7 +249,7 @@ img {
 .hero-image {
     width: 100%;
     height: auto;
-    max-height: 420px;
+    max-height: 380px;
     object-fit: cover;
     border-radius: 20px;
     box-shadow: var(--shadow-lg);
